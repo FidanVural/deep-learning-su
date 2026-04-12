@@ -109,8 +109,7 @@ def _get_target_layer(model: nn.Module) -> nn.Module:
     """
     Attempts to automatically find the last convolutional layer.
 
-    Supports TransferResNet (model.model.layer4), ResNetCIFAR (model.layer4),
-    and SimpleCNN (model.conv_blocks[-1]).
+    Supports ResNetCIFAR (model.layer4) and SimpleCNN (model.conv_blocks[-1]).
 
     Args:
         model: Neural network model.

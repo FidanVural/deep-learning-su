@@ -37,8 +37,6 @@ from utils.flops_counter import count_flops
 
 from models.simple_cnn import SimpleCNN, SimpleCNNConfig
 from models.resnet_cifar import ResNetCIFAR, ResNetCIFARConfig, resnet18_cifar
-from models.mobilenet_cifar import MobileNetCIFAR, MobileNetCIFARConfig, mobilenetv2_cifar
-from models.transfer_models import TransferResNet, TransferModelConfig
 
 from train import train
 from test import (
@@ -97,18 +95,6 @@ def build_model(model_params: ModelParams) -> torch.nn.Module:
 
     elif model_type == "resnet18":
         return resnet18_cifar(num_classes=model_params.num_classes)
-
-    elif model_type == "mobilenetv2":
-        return mobilenetv2_cifar(num_classes=model_params.num_classes, width_mult=1.0)
-
-    elif model_type == "transfer_resnet":
-        config = TransferModelConfig(
-            num_classes=model_params.num_classes,
-            pretrained=model_params.pretrained,
-            freeze_until=model_params.freeze_until,
-            modify_first_conv=model_params.modify_first_conv,
-        )
-        return TransferResNet(config)
 
     else:
         raise ValueError(f"Unknown model type: {model_type}")
@@ -202,8 +188,9 @@ def run_finetune(
     model = build_model(model_params)
     model = model.to(device)
 
+    flops_m, params_m = count_flops(model, input_size=(3, 32, 32), verbose=False)
     num_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    print(f"Model: {model_params.model_type} | Trainable params: {num_params:,}")
+    print(f"Model: {model_params.model_type} | Params: {params_m:.2f}M | FLOPs: {flops_m:.2f}M")
 
     history = train(
         model=model,

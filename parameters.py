@@ -43,11 +43,8 @@ class AugMixParams:
 class ModelParams:
     """Configuration for model architecture."""
 
-    model_type: str = "transfer_resnet"
+    model_type: str = "resnet18"
     num_classes: int = 10
-    pretrained: bool = True
-    freeze_until: Optional[str] = None
-    modify_first_conv: bool = False
     cnn_channels: List[int] = field(default_factory=lambda: [32, 64, 128])
     cnn_hidden_size: int = 256
     dropout: float = 0.3
@@ -165,12 +162,9 @@ def get_params() -> Tuple[DataParams, AugMixParams, ModelParams, TrainParams, At
     # --- Model ---
     parser.add_argument(
         "--model_type",
-        choices=["simple_cnn", "resnet18", "mobilenetv2", "transfer_resnet"],
-        default="transfer_resnet",
+        choices=["simple_cnn", "resnet18"],
+        default="resnet18",
     )
-    parser.add_argument("--pretrained", action="store_true")
-    parser.add_argument("--freeze_until", choices=["layer1", "layer2", "layer3", "layer4"], default=None)
-    parser.add_argument("--modify_first_conv", action="store_true")
     parser.add_argument("--cnn_channels", type=int, nargs="+", default=[32, 64, 128])
     parser.add_argument("--cnn_hidden_size", type=int, default=256)
     parser.add_argument("--dropout", type=float, default=0.3)
@@ -245,9 +239,6 @@ def get_params() -> Tuple[DataParams, AugMixParams, ModelParams, TrainParams, At
     model_params = ModelParams(
         model_type=args.model_type,
         num_classes=10,
-        pretrained=args.pretrained,
-        freeze_until=args.freeze_until,
-        modify_first_conv=args.modify_first_conv,
         cnn_channels=args.cnn_channels,
         cnn_hidden_size=args.cnn_hidden_size,
         dropout=args.dropout,
