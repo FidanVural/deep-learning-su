@@ -14,25 +14,22 @@ Features:
 
 from typing import Any, Dict, List, Optional, Tuple
 import os
-import sys
 import numpy as np
 
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
-from hw2.utils.cifar10c import evaluate_corruptions
-from hw2.utils.pgd_attack import PGDAttack, generate_adversarial_samples
-from hw2.utils.gradcam import GradCAM, _get_target_layer, visualize_gradcam
-from hw2.utils.visualization import (
+from utils.cifar10c import evaluate_corruptions
+from utils.pgd_attack import PGDAttack, generate_adversarial_samples
+from utils.gradcam import GradCAM, _get_target_layer, visualize_gradcam
+from utils.visualization import (
     extract_features,
     plot_tsne_adversarial,
     plot_gradcam_comparison,
     CIFAR10_CLASSES,
 )
-from hw2.parameters import AttackParams, VisParams
+from parameters import AttackParams, VisParams
 
 
 @torch.no_grad()

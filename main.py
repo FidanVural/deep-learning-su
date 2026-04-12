@@ -12,14 +12,11 @@ Orchestrates five main tasks:
 """
 
 import os
-import sys
 import json
 
 import torch
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-
-from hw2.parameters import (
+from parameters import (
     get_params,
     DataParams,
     AugMixParams,
@@ -28,14 +25,13 @@ from hw2.parameters import (
     AttackParams,
     VisParams,
 )
-from hw2.utils.augmix import get_augmix_dataloaders
-from hw2.utils.visualization import (
+from utils.augmix import get_augmix_dataloaders
+from utils.visualization import (
     plot_training_history,
     plot_corruption_results,
     plot_adversarial_comparison,
     CIFAR10_CLASSES,
 )
-
 from utils.data_cifar import DataConfig, get_dataloaders
 from utils.flops_counter import count_flops
 
@@ -44,8 +40,8 @@ from models.resnet_cifar import ResNetCIFAR, ResNetCIFARConfig, resnet18_cifar
 from models.mobilenet_cifar import MobileNetCIFAR, MobileNetCIFARConfig, mobilenetv2_cifar
 from models.transfer_models import TransferResNet, TransferModelConfig
 
-from hw2.train import train
-from hw2.test import (
+from train import train
+from test import (
     test_clean,
     test_corruptions,
     test_adversarial,

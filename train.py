@@ -12,7 +12,6 @@ Supports:
 
 from typing import Dict, List, Optional, Tuple, Union
 import os
-import sys
 
 import torch
 import torch.nn as nn
@@ -23,8 +22,6 @@ from torch.optim.lr_scheduler import (
     ReduceLROnPlateau,
     LambdaLR,
 )
-
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from parameters import TrainParams
 from utils.distillation import DistillationLoss, CustomDistillationLoss
