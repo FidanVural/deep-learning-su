@@ -1,0 +1,7 @@
+{
+  "teacher_clean_acc": 0.9377,
+  "teacher_adv_acc": 0.0023,
+  "student_clean_acc": 0.8707,
+  "student_adv_acc": 0.6825,
+  "transfer_rate": 0.3175
+}

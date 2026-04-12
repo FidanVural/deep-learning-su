@@ -1,0 +1,8 @@
+{
+  "teacher_acc": 0.9377,
+  "student_acc": 0.8707,
+  "best_val_acc": 0.871,
+  "temperature": 4.0,
+  "alpha": 0.5,
+  "epochs": 100
+}

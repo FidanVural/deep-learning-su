@@ -1,0 +1,12 @@
+{
+  "Standard": {
+    "clean_acc": 0.939,
+    "adv_acc_linf": 0.0009,
+    "adv_acc_l2": 0.0946
+  },
+  "AugMix": {
+    "clean_acc": 0.9377,
+    "adv_acc_linf": 0.0028,
+    "adv_acc_l2": 0.1212
+  }
+}
