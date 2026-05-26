@@ -1,0 +1,17 @@
+{
+  "final_ser": 0.0034199999645352364,
+  "final_bler": 0.01221999991685152,
+  "final_accuracy_per_symbol": 0.9965800000354648,
+  "final_message_accuracy": 0.9877800000831485,
+  "best_val_ser": 0.00275,
+  "epochs_trained": 200,
+  "config": {
+    "alphabet_size": 8,
+    "message_length": 4,
+    "num_rounds": 4,
+    "noise_variance": 0.25,
+    "d_model": 64,
+    "n_heads": 4,
+    "n_layers": 2
+  }
+}
