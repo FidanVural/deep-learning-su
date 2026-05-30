@@ -197,7 +197,7 @@ def test_turning_point(args):
     fig, ax = plt.subplots(figsize=(6, 5))
     disp = ConfusionMatrixDisplay(cm, display_labels=["Pass", "Buy"])
     disp.plot(ax=ax, cmap="Blues", values_format="d")
-    ax.set_title("Turning Point Detection - Confusion Matrix\n(γ=1.1, BiLSTM)")
+    ax.set_title(f"Turning Point Detection - Confusion Matrix\n(γ={GAMMA}, BiLSTM)")
     path = os.path.join(args.report_dir, "turning_point_confusion_matrix.png")
     fig.savefig(path, dpi=150, bbox_inches="tight")
     plt.close(fig)
@@ -224,7 +224,7 @@ def test_turning_point(args):
         "precision": float(precision),
         "recall": float(recall),
         "f1": float(f1),
-        "threshold_gamma": 1.1,
+        "threshold_gamma": GAMMA,
     }
     return results
 

@@ -298,7 +298,7 @@ def train_turning_point(args):
                 dpi=150, bbox_inches="tight")
     plt.close(fig)
 
-    return {"best_val_bce": best_val_loss, "epochs_trained": len(history["train_loss"])}
+    return {"best_val_bce": best_val_loss, "epochs_trained": len(history["train_loss"]), "threshold_gamma": GAMMA}
 
 
 def main():

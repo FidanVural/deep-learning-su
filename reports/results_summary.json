@@ -57,7 +57,7 @@
     "precision": 0.06985294117390246,
     "recall": 0.6129032256087409,
     "f1": 0.12541253940899041,
-    "buy_threshold_gamma": 1.1,
+    "threshold_gamma": 0.1,
     "epochs_trained": 21
   }
 }
